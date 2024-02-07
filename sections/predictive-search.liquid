@@ -1,5 +1,7 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+
 {%- if predictive_search.performed -%}
+  
   {% assign first_column_results_size = predictive_search.resources.queries.size
     | plus: predictive_search.resources.collections.size
     | plus: predictive_search.resources.pages.size
@@ -129,6 +131,8 @@
               role="group"
               aria-labelledby="predictive-search-products"
             >
+            {% # Stop searched items from displaying %}
+            {% comment  %}  
               {%- for product in predictive_search.resources.products -%}
                 <li
                   id="predictive-search-option-product-{{ forloop.index }}"
@@ -164,7 +168,7 @@
                     </div>
                   </a>
                 </li>
-              {%- endfor -%}
+              {%- endfor -%}{% endcomment  %}  
             </ul>
           </div>
         {%- endif -%}
